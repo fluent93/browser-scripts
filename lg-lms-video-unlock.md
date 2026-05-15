@@ -1,6 +1,6 @@
-# LG LMS (SAP SuccessFactors) 강의 진행바 제한 해제 가이드
+# SAP SuccessFactors LMS 강의 진행바 제한 해제 가이드
 
-> **환경**: LG전자 사내 LMS (`lg.lms.sapsf.com`) — SAP SuccessFactors 기반  
+> **환경**: SAP SuccessFactors 기반 사내 LMS  
 > **목적**: 진행바(progress bar) 앞뒤 이동 제한 해제 및 빠른 수강 완료 처리
 
 ---
@@ -76,7 +76,7 @@ if (api) {
 
 | 항목 | 내용 |
 |------|------|
-| LMS | SAP SuccessFactors (`lg.lms.sapsf.com`) |
+| LMS | SAP SuccessFactors |
 | 영상 위치 | `iframe[0]` 내부 HTML5 `<video>` 태그 |
 | 완료 추적 방식 | SCORM 2004 (`API_1484_11`) + `ScormRteServlet` |
 | 진행 제한 방식 | 플레이어 내부 `timeupdate` 이벤트로 seek 차단 |
