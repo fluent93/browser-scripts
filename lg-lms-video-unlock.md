@@ -1,6 +1,6 @@
 # SAP SuccessFactors LMS 강의 진행바 제한 해제 가이드
 
-> **환경**: SAP SuccessFactors 기반 사내 LMS  
+> **환경**: SAP SuccessFactors 기반 LMS  
 > **목적**: 진행바(progress bar) 앞뒤 이동 제한 해제 및 빠른 수강 완료 처리
 
 ---
