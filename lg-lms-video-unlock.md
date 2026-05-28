@@ -13,7 +13,26 @@
 
 ---
 
-## 방법 1: 단계별 검증 버전 (권장)
+## 권장 방법 (방법 2): 한 줄 자동화 버전 (검증 완료)
+
+> ✅ 현재 환경에서 **실사용 검증 완료**.  
+> 가장 간단하고 재현성이 좋아서 이 방법을 우선 권장합니다.
+
+강의 **Play 누른 후** Console에 아래 한 줄 입력:
+
+```javascript
+(function(){var v=document.querySelectorAll('iframe')[0].contentDocument.querySelector('video');v.playbackRate=16;v.addEventListener('ended',function(){var api=window.API_1484_11||window.API;if(api){var h=Math.floor(v.duration/3600),m=Math.floor((v.duration%3600)/60),s=Math.floor(v.duration%60);api.SetValue('cmi.completion_status','completed');api.SetValue('cmi.success_status','passed');api.SetValue('cmi.progress_measure','1');api.SetValue('cmi.session_time','PT'+(h?h+'H':'')+m+'M'+s+'S');api.Commit('');alert('수강 완료! 새로고침하세요.');}}); console.log('설정 완료!');})();
+```
+
+- 16배속 자동 설정
+- 영상 종료 시 PT 시간 자동 계산 후 SCORM 저장
+- 완료되면 `"수강 완료! 새로고침하세요."` 팝업 자동으로 뜸
+
+---
+
+## 수동 방법 (방법 1): 단계별 처리 버전
+
+> 자동화 스크립트 사용이 어렵거나, 단계별로 확인하면서 진행하고 싶을 때 사용하세요.
 
 ### Step 1 — 16배속 설정
 
@@ -55,20 +74,6 @@ if (api) {
 ### Step 3 — 완료 확인
 
 `F5`로 페이지 새로고침 후 수강 완료 여부 확인
-
----
-
-## 방법 2: 한 줄 자동화 버전 (PT 시간 자동 계산)
-
-강의 **Play 누른 후** Console에 아래 한 줄 입력:
-
-```javascript
-(function(){var v=document.querySelectorAll('iframe')[0].contentDocument.querySelector('video');v.playbackRate=16;v.addEventListener('ended',function(){var api=window.API_1484_11||window.API;if(api){var h=Math.floor(v.duration/3600),m=Math.floor((v.duration%3600)/60),s=Math.floor(v.duration%60);api.SetValue('cmi.completion_status','completed');api.SetValue('cmi.success_status','passed');api.SetValue('cmi.progress_measure','1');api.SetValue('cmi.session_time','PT'+(h?h+'H':'')+m+'M'+s+'S');api.Commit('');alert('수강 완료! 새로고침하세요.');}}); console.log('설정 완료!');})();
-```
-
-- 16배속 자동 설정
-- 영상 종료 시 PT 시간 자동 계산 후 SCORM 저장
-- 완료되면 `"수강 완료! 새로고침하세요."` 팝업 자동으로 뜸
 
 ---
 
